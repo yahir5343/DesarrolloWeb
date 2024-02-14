@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .producto {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 300px;
+        }
+        .producto img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .producto p {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 <h1>Productos Disponibles</h1>
 <div class="productos">
-    <!-- Supongamos que tienes un array con los productos y sus existencias -->
     <?php
     $productos = array(
         array('nombre' => 'Computadora', 'precio' => 15000, 'existencias' => 20, 'imagen' => 'computadora.jpg'),
@@ -19,15 +36,13 @@
         // Agrega más productos según sea necesario
     );
 
-    // Mostrar los productos en forma de lista
     foreach ($productos as $producto) {
         echo '<div class="producto">';
-        echo '<p>' . $producto['nombre'] . ' - $' . $producto['precio'] . ' - Existencias: ' . $producto['existencias'] . '</p>';
-        // Agregar la imagen del producto
-        echo '<img src="' . $producto['imagen'] . '" alt="' . $producto['nombre'] . '" width="200">';
-        // Agregar un campo para seleccionar la cantidad de este producto
+        echo '<img src="' . $producto['imagen'] . '" alt="' . $producto['nombre'] . '">';
+        echo '<p><strong>' . $producto['nombre'] . '</strong></p>';
+        echo '<p>Precio: $' . $producto['precio'] . '</p>';
+        echo '<p>Existencias: ' . $producto['existencias'] . '</p>';
         echo '<input type="number" id="cantidad_' . str_replace(' ', '_', $producto['nombre']) . '" min="1" max="' . $producto['existencias'] . '" value="1">';
-        // Agregar un botón para agregar este producto al carrito
         echo '<button onclick="agregarAlCarrito(\'' . $producto['nombre'] . '\', ' . $producto['precio'] . ', ' . $producto['existencias'] . ', \'' . $producto['imagen'] . '\')">Agregar al carrito</button>';
         echo '</div>';
     }
@@ -63,9 +78,7 @@
     }
 
     function procederAlPago() {
-        // Aquí puedes implementar la lógica para proceder al pago
         if (carrito.length > 0) {
-            // Redirigir a la página de total del cliente para mostrar el total a pagar
             window.location.href = 'total_cliente.php?productos=' + JSON.stringify(carrito);
         } else {
             alert('Por favor, seleccione al menos un producto para proceder al pago.');
@@ -73,7 +86,6 @@
     }
 
     function regresarAlInicio() {
-        // Redirigir al formulario de inicio de sesión (index.php)
         window.location.href = 'index.php';
     }
 </script>

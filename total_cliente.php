@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Total a Pagar</title>
     <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
 <h1>Total a Pagar</h1>
