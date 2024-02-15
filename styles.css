@@ -1,0 +1,12 @@
+.container {
+    padding: 20px;
+}
+
+.grafico-container {
+    float: left;
+    margin: 40px 20px 40px 40px;
+    width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
